@@ -1,5 +1,6 @@
 import React from 'react';
 import calculate from '../lib/calculate';
+import TableRowOut from './TableRowOut';
 
 const columns = [
     'name',
@@ -9,33 +10,6 @@ const columns = [
     'net-income',
     'super-amount',
 ]
-
-const style = {
-    cell: {
-        border: '1px solid black',
-        height: '50px',
-        padding: 0,
-        textAlign: 'center',
-    }
-}
-
-let TableRow = ({data}) => {
-    // console.log(data)
-    return (
-        <tr style={{width: '100%'}}>
-            {Object.keys(data).map( (name,i) => {
-                return (
-                    <td 
-                        key={i}
-                        style={style.cell}>
-                        {data[name]}
-                    </td>
-                )
-            })}
-        </tr>
-    )
-}
-
 
 class OutputTable extends React.Component {
     render() {
@@ -58,7 +32,7 @@ class OutputTable extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {newData.map( (dataObj, i) => <TableRow key={i} data={dataObj}/>)}
+                        {newData.map( (dataObj, i) => <TableRowOut key={i} data={dataObj}/>)}
                     </tbody>
                 </table>
             </div>

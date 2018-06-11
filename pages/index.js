@@ -2,10 +2,9 @@ import InputTable from '../components/InputTable';
 import OutputTable from '../components/OutputTable';
 import React from 'react';
 
-const DataContext = React.createContext({
-    data: [],
-})
-
+// const DataContext = React.createContext({
+//     data: [],
+// })
 
 class App extends React.Component {
     constructor(props) {

@@ -1,36 +1,7 @@
 import React from 'react';
+import TableRowIn, {columns} from './TableRowIn'
 
 const rowNum = 2;
-const columns = [
-    'first-name',
-    'last-name',
-    'annual-salary',
-    'super-rate',
-    'payment-start-date',
-]
-
-let TableCell = ({name, handleChange, value }) =>
-    <td style={{border: '1px solid black', padding: 0}}>
-        <textarea
-            style={{ padding: 0, width: '100%', height: '100%', borderStyle: 'none'}}
-            name={name}
-            onChange={handleChange}
-            >
-        </textarea>
-    </td>
-
-
-let TableRow = ({ index, handleChange }) =>
-    <tr>
-        { columns.map( (name,i) => {
-            return <TableCell 
-                        key={i}
-                        name={name} 
-                        handleChange={(e)=> handleChange(e, index)}
-                        />
-        })}
-    </tr>
-
 
 class InputTable extends React.Component {
     constructor(props) {
@@ -70,7 +41,7 @@ class InputTable extends React.Component {
                         { Array(rowNum)
                                 .fill()
                                 .map( (x,i) => {
-                                    return <TableRow 
+                                    return <TableRowIn 
                                                 key={i} 
                                                 index={i}
                                                 handleChange={handleChange}
