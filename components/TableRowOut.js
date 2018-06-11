@@ -8,7 +8,6 @@ const style = {
 }
 
 let TableRowOut = ({data}) => {
-    // console.log(data)
     return (
         <tr style={{width: '100%'}}>
             {Object.keys(data).map( (name,i) => {
