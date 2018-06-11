@@ -1,4 +1,5 @@
 import React from 'react';
+import calculate from '../lib/calculate';
 
 const columns = [
     'name',
@@ -8,6 +9,9 @@ const columns = [
     'net-income',
     'super-amount',
 ]
+
+
+
 
 class OutputTable extends React.Component {
     // constructor(props) {
@@ -19,6 +23,8 @@ class OutputTable extends React.Component {
 
     render() {
         let { data } = this.props;
+        let newData = calculate(data);
+        console.log(newData)
         return (
             <div>
                 <p>OutputTable</p>

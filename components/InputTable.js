@@ -52,7 +52,7 @@ class InputTable extends React.Component {
         super(props);
         this.state = {
             rowNum,
-            data: Array(rowNum).fill({}),
+            data: Array(rowNum).fill().map( x => {}),
         }
     }
 

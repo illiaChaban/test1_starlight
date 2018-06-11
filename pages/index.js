@@ -29,7 +29,7 @@ class App extends React.Component {
                     showCalculations={showCalculations}
                     updateData={updateData}/>
                 <p style={{ fontWeight: 'bold'}}>Output</p>        
-                {showTable && <OutputTable/>}
+                {showTable && <OutputTable data={data}/>}
                 {/* <button onClick={()=> console.log(this.state.data)}>ShowDAta</button> */}
             </div>
         )
