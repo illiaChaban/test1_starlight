@@ -1,5 +1,6 @@
 import React from 'react';
 
+const rowNum = 2;
 const columns = [
     'first-name',
     'last-name',
@@ -9,12 +10,13 @@ const columns = [
 ]
 
 let TableCell = ({name, handleChange, value }) =>
-    <td>
-        <input
+    <td style={{border: '1px solid black', padding: 0}}>
+        <textarea
+            style={{ padding: 0, width: '100%', height: '100%', borderStyle: 'none'}}
             name={name}
             onChange={handleChange}
             >
-        </input>
+        </textarea>
     </td>
 
 
@@ -28,24 +30,7 @@ let TableRow = ({ index, handleChange }) =>
                         />
         })}
     </tr>
-// class TableRow extends React.Component{
-//     render() {
-//         let { index, handleChange } = this.props;
-//         return (
-//                 <tr>
-//                     { columns.map( (name,i) => {
-//                         return <TableCell 
-//                                     key={i}
-//                                     name={name} 
-//                                     handleChange={(e)=> handleChange(e, index)}
-//                                     />
-//                     })}
-//                 </tr>
-//         )
-//     }
-// } 
 
-const rowNum = 2;
 
 class InputTable extends React.Component {
     constructor(props) {
@@ -69,10 +54,16 @@ class InputTable extends React.Component {
 
         return (
             <div>
-                <table>
+                <table style={{ borderCollapse: 'collapse'}}>
                     <thead>
                         <tr>
-                            {columns.map( (name,i) => <th key={i}>{name}</th>)}
+                            {columns.map( (name,i) => (
+                                <th 
+                                    key={i} 
+                                    style={{border: '1px solid black'}}>
+                                    {name}
+                                </th>
+                            ))}
                         </tr>
                     </thead>
                     <tbody>

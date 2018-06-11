@@ -23,7 +23,6 @@ class App extends React.Component {
 
         return (
             <div>
-                <p>Hello</p>
                 <p style={{ fontWeight: 'bold'}}>Input</p>
                 <InputTable 
                     showCalculations={showCalculations}
