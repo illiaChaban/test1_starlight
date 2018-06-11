@@ -8,13 +8,13 @@ export const columns = [
     'payment-start-date',
 ]
 
-let TableRowIn = ({ index, handleChange }) =>
+let TableRowIn = ({ index }) =>
     <tr>
         { columns.map( (name,i) => {
             return <TableCellIn 
                         key={i}
-                        name={name} 
-                        handleChange={(e)=> handleChange(e, index)}
+                        name={name}
+                        row={index}
                         />
         })}
     </tr>

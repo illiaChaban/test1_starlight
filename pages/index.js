@@ -1,38 +1,22 @@
 import InputTable from '../components/InputTable';
 import OutputTable from '../components/OutputTable';
 import React from 'react';
+import AppProvider from '../components/AppProvider'
+import DataContext from '../components/DataContext';
 
-// const DataContext = React.createContext({
-//     data: [],
-// })
 
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: [],
-            showTable: false
-        }
-    }
 
-    render() {
-        let { data, showTable } = this.state;
-        let showCalculations = () => this.setState({ showTable: true});
-        let updateData = (data) => this.setState({data})
-
-        return (
-            <div>
-                <p style={{ fontWeight: 'bold'}}>Input</p>
-                <InputTable 
-                    showCalculations={showCalculations}
-                    updateData={updateData}/>
-                <p style={{ fontWeight: 'bold'}}>Output</p>        
-                {showTable && <OutputTable data={data}/>}
-                {/* <button onClick={()=> console.log(this.state.data)}>ShowDAta</button> */}
-            </div>
-        )
-    }
-}
+let App = () =>
+    <AppProvider>
+        <div>
+            <p style={{ fontWeight: 'bold'}}>Input</p>
+            <InputTable />
+            <p style={{ fontWeight: 'bold'}}>Output</p>  
+            <DataContext.Consumer>    
+                {({showTable, data}) => showTable && <OutputTable data={data}/>}
+            </DataContext.Consumer>
+        </div>
+    </AppProvider>
 
 
 export default App;
