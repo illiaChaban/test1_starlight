@@ -1,0 +1,19 @@
+{
+  "name": "test1_starlight",
+  "version": "1.0.0",
+  "description": "https://docs.google.com/document/d/13Wl2klo5-PbtMJDysFZc6xGnbxvs7GF7tYrA6omhqI8/edit#",
+  "main": "index.js",
+  "dependencies": {
+    "next": "^6.0.3",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "illia_chaban",
+  "license": "ISC"
+}
