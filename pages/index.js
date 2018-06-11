@@ -30,6 +30,7 @@ class App extends React.Component {
                     updateData={updateData}/>
                 <p style={{ fontWeight: 'bold'}}>Output</p>        
                 {showTable && <OutputTable/>}
+                {/* <button onClick={()=> console.log(this.state.data)}>ShowDAta</button> */}
             </div>
         )
     }

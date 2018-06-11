@@ -94,7 +94,7 @@ class InputTable extends React.Component {
                         showCalculations();
                     }}
                 >Calculate</button>
-                <button onClick={() => console.log(this.state.data)}>Show</button>
+                {/* <button onClick={() => console.log(this.state.data)}>Show</button> */}
             </div>
         )
     }
