@@ -1,42 +1,34 @@
 import React from 'react';
 
+const columns = [
+    'first-name',
+    'last-name',
+    'annual-salary',
+    'super-rate',
+    'payment-start-date',
+]
+
 let TableCell = ({name, handleChange, value }) =>
     <td>
         <input
             name={name}
             onChange={handleChange}
-            value={value}>
+            >
         </input>
     </td>
 
 class TableRow extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            fname: '',
-            lname: '',
-            asalary: '',
-            srate: '',
-            paystart: '',
-        }
-    }
-    
     render() {
-        let { index } = this.props;
-        let handleChange = (event) => {
-            // console.log(event.target.value, event.target.name)
-            this.setState({ [event.target.name]: event.target.value})
-        }
 
+        let { index, handleChange } = this.props;
         return (
                 <tr>
-                    { Object.keys(this.state).map( (name,i) => {
-                        let value = this.state[name];
+                    { columns.map( (name,i) => {
                         return <TableCell 
                                     key={i}
                                     name={name} 
-                                    handleChange={handleChange}
-                                    value={value}/>
+                                    handleChange={(e)=> handleChange(e, index)}
+                                    />
                     })}
                 </tr>
         )
@@ -60,27 +52,35 @@ class InputTable extends React.Component {
         let { rowNum, data } = this.state;
         let { showCalculations, updateData } = this.props;
         let addRow = () => this.setState({ rowNum: rowNum + 1})
+        let addObj = () => {
+            let data = [ ...this.state.data];
+            data.push({})
+            this.setState({ data})
+        }
+        let handleChange = (event, index) => {
+            let newData = [ ...this.state.data];
+            if (!newData[index]) newData[index] = {}; 
+            newData[index][event.target.name] = event.target.value;
+            this.setState({ data: newData})
+        }
 
         return (
             <div>
                 <table>
                     <thead>
                         <tr>
-                            <th>first-name</th>
-                            <th>last-name</th>
-                            <th>annual-salary</th>
-                            <th>super-rate</th>
-                            <th>payment-start-date</th>
+                            {columns.map( (name,i) => <th key={i}>{name}</th>)}
                         </tr>
                     </thead>
                     <tbody>
                         { Array(rowNum)
                                 .fill()
-                                .map( (x,i) => <TableRow 
-                                                    key={i} 
-                                                    index={i}
-                                                    
-                                                    />)
+                                .map( (x,i) => {
+                                    return <TableRow 
+                                                key={i} 
+                                                index={i}
+                                                handleChange={handleChange}
+                                />})
                         }
                     </tbody>
                 </table>
@@ -91,6 +91,7 @@ class InputTable extends React.Component {
                         showCalculations();
                     }}
                 >Calculate</button>
+                <button onClick={() => console.log(this.state.data)}>Show</button>
             </div>
         )
     }
